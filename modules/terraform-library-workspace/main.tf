@@ -16,11 +16,12 @@ module "github_repository" {
   auto_init                 = var.github_auto_init
 }
 
-module "github_branch_protection" {
-  source                    = "../terraform-github-branch_protection"
-  repository_id             = module.github_repository.node_id
-  enforce_admins            = var.github_enforce_admins
-}
+# module "github_branch_protection" {
+#   source                    = "../terraform-github-branch_protection"
+#   repository_id             = module.github_repository.node_id
+#   enforce_admins            = var.github_enforce_admins
+#   push_restrictions         = []
+# }
 
 data "tfe_oauth_client" "library-ucsb" {
   oauth_client_id           = var.oauth_client_id
