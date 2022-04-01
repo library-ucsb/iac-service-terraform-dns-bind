@@ -9,4 +9,6 @@ module "library_workspace" {
     tfc_organization        = var.tfc_organization
     description             = var.description
     oauth_client_id         = var.oauth_client_id
+
+    github_enforce_admins   = var.github_enforce_admins
 }

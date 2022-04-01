@@ -34,6 +34,11 @@ variable "oauth_client_id" {
 }
 
 variable "github_auto_init" {
-  type          = bool
-  default       = true
+    type        = bool
+    default     = true
+}
+
+variable "github_enforce_admins" {
+    type        = bool
+    default     = true
 }

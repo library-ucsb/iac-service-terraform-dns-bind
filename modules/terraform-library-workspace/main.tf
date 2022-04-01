@@ -19,6 +19,7 @@ module "github_repository" {
 module "github_branch_protection" {
   source                    = "../terraform-github-branch_protection"
   repository_id             = module.github_repository.node_id
+  enforce_admins            = var.github_enforce_admins
 }
 
 data "tfe_oauth_client" "library-ucsb" {
