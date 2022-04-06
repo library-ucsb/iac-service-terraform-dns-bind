@@ -15,6 +15,7 @@ module "library_workspace" {
     oauth_client_id                 = var.oauth_client_id
 
     github_enforce_admins           = var.github_enforce_admins
+    github_repo_allow_force_pushes  = var.github_repo_allows_force_pushes 
     github_repo_push_restrictions   =  [ data.github_user.current.node_id ]
 }
 
