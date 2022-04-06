@@ -7,7 +7,7 @@ terraform {
   cloud {
     organization    = "library-ucsb-core"
     workspaces {
-      name          = "iac-server-terraform-dns-bind"
+      name          = "iac-service-terraform-dns-bind"
     }
   }
 
