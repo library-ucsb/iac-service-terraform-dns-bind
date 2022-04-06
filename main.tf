@@ -1,7 +1,7 @@
 
 # create one unit of `library-workspace`
 module "library_workspace" {
-    source                  = "./modules/terraform-library-workspace"
+    source                  = "app.terraform.io/library-ucsb-core/module-library-workspace/tfc"
 
     name                    = var.name
     github_repo_visibility  = var.visibility
