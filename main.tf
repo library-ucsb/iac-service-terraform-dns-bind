@@ -32,7 +32,7 @@ module "github-repo-bind" {
 module "github-branch_protection-bind" {
     source                          = "app.terraform.io/library-ucsb-core/module-github_branch_protection/tfc"
   
-    repository_id                   = module.github-repo-bind.repo_id
+    repository_id                   = module.github-repo-bind.node_id
     enforce_admins                  = false
     allows_force_pushes             = true
 }
