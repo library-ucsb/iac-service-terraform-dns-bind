@@ -24,7 +24,7 @@ module "github-repo-bind" {
     source                          = "app.terraform.io/library-ucsb-core/module-github_repository/tfc"
 
     name                            = var.github_repo-dns_zones-name
-    visibility                      = var.visibility 
+    visibility                      = "private"
     description                     = var.github_repo-dns_zones-description 
 }
 
