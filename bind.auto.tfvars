@@ -9,3 +9,8 @@ github_repo_allows_force_pushes     = true
 
 github_repo-dns_zones-name          = "iac-service-dns-bind_zones"
 github_repo-dns_zones-description   = "holds the bind zone files"
+
+github_branches = [
+    "main",
+    "dev"
+]

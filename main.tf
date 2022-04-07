@@ -28,6 +28,19 @@ module "github-repo-bind" {
     description                     = var.github_repo-dns_zones-description 
 }
 
+module "github-branches" {
+    source                          = "./modules/github_branch_default"
+    for_each = {
+        for branch in var.github_branches: "${var.github_repo-dns_zones-name}-${branch}" => {
+            branch                  = branch
+        }
+    }
+
+    repository                      = each.key
+    branch                          = each.value.branch
+}
+
+
 # GitHub Branch Protection
 module "github-branch_protection-bind" {
     source                          = "app.terraform.io/library-ucsb-core/module-github_branch_protection/tfc"
