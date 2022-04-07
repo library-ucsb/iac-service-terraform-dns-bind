@@ -3,7 +3,7 @@ data "github_user" "current" {
 }
 
 
-# create one unit of `library-workspace`
+## The TFC workspace and github repo that manages the overall dns-bind infrasstructure
 module "library_workspace" {
     source                          = "app.terraform.io/library-ucsb-core/module-library_workspace/tfc"
 
@@ -19,20 +19,20 @@ module "library_workspace" {
     github_repo_push_restrictions   =  [ data.github_user.current.node_id ]
 }
 
-output "github_repo" {
-    value = {
-        full_name                   = module.library_workspace.github_repo_full_name  
-        ssh_clone_url               = module.library_workspace.github_repo_ssh_clone_url
-        id                          = module.library_workspace.github_repo_id
-        branches                    = module.library_workspace.github_repo_branches
-        push_restrictions           = module.library_workspace.github_repo_push_restrictions
-    }
+## GitHub repo to house our BIND Zone files
+module "github-repo-bind" {
+    source                          = "app.terraform.io/library-ucsb-core/module-github_repository/tfc"
+
+    name                            = var.github_repo-dns_zones-name
+    visibility                      = var.visibility 
+    description                     = var.github_repo-dns_zones-description 
 }
 
-output "tfc_workspace" {
-    value = {
-        id                          = module.library_workspace.tfc_workspace_id
-        name                        = module.library_workspace.tfc_workspace_name
-        working_directory           = module.library_workspace.tfc_workspace_working_directory
-    }
+# GitHub Branch Protection
+module "github-branch_protection-bind" {
+    source                          = "app.terraform.io/library-ucsb-core/module-github_branch_protection/tfc"
+  
+    repository_id                   = module.github-repo-bind.repo_id
+    enforce_admins                  = false
+    allows_force_pushes             = true
 }

@@ -34,3 +34,12 @@ variable "github_repo_allows_force_pushes" {
     type                        = bool
     default                     = false
 }
+
+variable "github_repo-dns_zones-name" {
+    type                        = string  
+}
+
+variable "github_repo-dns_zones-description" {
+    type                        = string
+    default                     = null
+}

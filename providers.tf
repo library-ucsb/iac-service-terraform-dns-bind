@@ -4,12 +4,12 @@ provider "tfe" {}
 ## GitHub
 terraform {
 
-  # cloud {
-  #   organization    = "library-ucsb-core"
-  #   workspaces {
-  #     name          = "iac-service-terraform-dns-bind"
-  #   }
-  # }
+  cloud {
+    organization    = "library-ucsb-core"
+    workspaces {
+      name          = "iac-service-terraform-dns-bind"
+    }
+  }
 
   required_providers {
     tfe = {
