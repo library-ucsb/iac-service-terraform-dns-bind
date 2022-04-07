@@ -48,3 +48,8 @@ variable "github_repo-dns_zones-description" {
     type                        = string
     default                     = null
 }
+
+variable "github_repo_default_branch" {
+    type                        = string
+    default                     = "main"
+}

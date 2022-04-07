@@ -14,3 +14,5 @@ github_branches = [
     "main",
     "dev"
 ]
+
+github_repo_default_branch          = "main"

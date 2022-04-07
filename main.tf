@@ -29,7 +29,7 @@ module "github-repo-bind" {
 }
 
 module "github-branches" {
-    source                          = "./modules/github_branch_default"
+    source                          = "./modules/github_branch"
     for_each = {
         for branch in var.github_branches: "${var.github_repo-dns_zones-name}-${branch}" => {
             branch                  = branch
@@ -40,6 +40,12 @@ module "github-branches" {
     branch                          = each.value.branch
 }
 
+module "github-repo-branch-default" {
+    source                          = "./modules/github_branch_default"
+
+    repository                      = module.github-repo-bind.full_name
+    branch                          = var.github_repo_default_branch
+}
 
 # GitHub Branch Protection
 module "github-branch_protection-bind" {
