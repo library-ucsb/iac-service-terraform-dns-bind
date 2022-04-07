@@ -36,7 +36,7 @@ module "github-branches" {
         }
     }
 
-    repository                      = each.key
+    repository                      = module.github-repo-bind.full_name
     branch                          = each.value.branch
 }
 
