@@ -36,14 +36,14 @@ module "github-branches" {
         }
     }
 
-    repository                      = module.github-repo-bind.full_name
+    repository                      = module.github-repo-bind.name
     branch                          = each.value.branch
 }
 
 module "github-repo-branch-default" {
     source                          = "./modules/github_branch_default"
 
-    repository                      = module.github-repo-bind.full_name
+    repository                      = module.github-repo-bind.name
     branch                          = var.github_repo_default_branch
 }
 
