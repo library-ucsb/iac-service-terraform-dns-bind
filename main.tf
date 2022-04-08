@@ -29,7 +29,7 @@ module "github-repo-bind" {
 }
 
 module "github-branches" {
-    source                          = "./modules/github_branch"
+    source                          = "app.terraform.io/library-ucsb-core/module-github_branch/tfc"
     for_each = {
         for branch in var.github_branches: "${var.github_repo-dns_zones-name}-${branch}" => {
             branch                  = branch
@@ -41,7 +41,7 @@ module "github-branches" {
 }
 
 module "github-repo-branch-default" {
-    source                          = "./modules/github_branch_default"
+    source                          = "app.terraform.io/library-ucsb-core/module-github_branch_default/tfc"
 
     repository                      = module.github-repo-bind.name
     branch                          = var.github_repo_default_branch
@@ -54,4 +54,14 @@ module "github-branch_protection-bind" {
     repository_id                   = module.github-repo-bind.node_id
     enforce_admins                  = false
     allows_force_pushes             = true
+}
+
+
+
+
+
+module "module-github_branch" {
+  source  = "app.terraform.io/library-ucsb-core/module-github_branch/tfc"
+  version = "0.0.1"
+  # insert required variables here
 }
