@@ -55,13 +55,3 @@ module "github-branch_protection-bind" {
     enforce_admins                  = false
     allows_force_pushes             = true
 }
-
-
-
-
-
-module "module-github_branch" {
-  source  = "app.terraform.io/library-ucsb-core/module-github_branch/tfc"
-  version = "0.0.1"
-  # insert required variables here
-}
